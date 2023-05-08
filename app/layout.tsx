@@ -1,9 +1,14 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Inter, Poppins } from 'next/font/google'
 
 import Nav from './components/nav/Nav'
 
 const inter = Inter({ subsets: ['latin'] })
+const poppins = Poppins({
+	weight: '700',
+	subsets: ['latin'],
+	variable: '--font-poppins',
+})
 
 export const metadata = {
 	title: 'Create Next App',
@@ -17,7 +22,9 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en' className='min-h-full flex'>
-			<body className={`flex-1 flex flex-col ${inter.className} text-mainfont`}>
+			<body
+				className={`flex-1 flex flex-col ${poppins.className} text-mainfont`}
+			>
 				<Nav />
 				{children}
 			</body>

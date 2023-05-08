@@ -12,7 +12,7 @@ const Nav = () => {
 				jobThing
 			</div>
 			<button
-				className={`rounded-sm bg-white px-4 py-2 text-mainbg font-bold text-lg transition-all duration-200 hover:text-white hover:bg-green-500 hover:scale-105 ${
+				className={`rounded-sm bg-white px-4 py-2 text-mainbg font-bold transition-all duration-200 hover:text-white hover:bg-green-500 hover:scale-105 ${
 					effect && 'animate-wiggle'
 				}`}
 				onClick={() => {
