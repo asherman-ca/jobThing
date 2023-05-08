@@ -2,7 +2,7 @@
 import { FormEvent, useState, useRef, useTransition } from 'react'
 import { BsFillSendCheckFill } from 'react-icons/bs'
 import { useRouter } from 'next/navigation'
-import createApplication from '../actions'
+import { createApplication } from '../actions'
 
 const AppForm = ({
 	userId,

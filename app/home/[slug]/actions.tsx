@@ -1,7 +1,7 @@
 'use server'
 import { prisma } from '@/prisma/Prisma'
 
-export default async function createApplication(
+export async function createApplication(
 	formData: FormData,
 	userId: string,
 	searchId: string
@@ -12,6 +12,18 @@ export default async function createApplication(
 			position: formData.get('position') as string,
 			searchId,
 			userId,
+		},
+	})
+	return application
+}
+
+export async function updateApplication(status: string, appId: string) {
+	const application = await prisma.application.update({
+		where: {
+			id: appId,
+		},
+		data: {
+			status,
 		},
 	})
 	return application
