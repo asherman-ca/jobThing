@@ -13,7 +13,7 @@ const Nav = async () => {
 		<div className='bg-mainbg flex justify-between items-center p-8'>
 			<div className='text-2xl font-bold flex gap-4 items-center'>
 				<Image src={resume} alt='resume' className='h-12 w-12' />
-				jobThing
+				JobThing
 			</div>
 			{!session?.user ? (
 				<SignInButton />

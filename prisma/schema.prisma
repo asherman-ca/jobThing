@@ -47,6 +47,8 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  searches     Search[]
+  applications Application[]
 }
 
 model VerificationToken {
@@ -55,4 +57,32 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Search {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title String
+  createdAt DateTime @default(now())
+  status String @default("active")
+  applications Application[]
+
+  @@unique([userId, title])
+  @@map("searches")
+}
+
+model Application {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  company String
+  position String?
+  location String?
+  status String @default("active")
+  createdAt DateTime @default(now())
+  searchId String
+  search Search @relation(fields: [searchId], references: [id])
+
+  @@map("applications")
 }
