@@ -12,7 +12,7 @@ const fetchSearches = async (session: any) => {
 async function SideBar({ session }: any) {
 	const searches = await fetchSearches(session)
 
-	return <SideBarContent searches={searches} />
+	return <SideBarContent searches={searches} userId={session.user.id} />
 }
 
 export default SideBar

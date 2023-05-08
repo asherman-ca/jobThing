@@ -1,16 +1,21 @@
 'use client'
 import React from 'react'
 import { motion } from 'framer-motion'
+import NewSearchForm from './NewSearchForm'
 
-const SideBarContent = ({ searches }: { searches: any[] }) => {
+const SideBarContent = ({
+	searches,
+	userId,
+}: {
+	searches: any[]
+	userId: string
+}) => {
 	return (
-		<motion.div
-			animate={{ translateX: 0 }}
-			initial={{ translateX: '-100%' }}
-			className='px-8 flex flex-col gap-4 min-w-[20%] text-left'
-		>
-			<button className='text-left text-mainfont'>+ New Search</button>
+		<motion.div className='px-8 flex flex-col gap-4 min-w-[15%] text-left'>
+			<NewSearchForm userId={userId} />
 			{searches.length === 0 && <span>No searches...</span>}
+			{searches.length > 0 &&
+				searches.map((search) => <div key={search.id}>{search.title}</div>)}
 		</motion.div>
 	)
 }
