@@ -1,6 +1,9 @@
 'use client'
 import React from 'react'
 import { motion } from 'framer-motion'
+import { BsCardList } from 'react-icons/bs'
+import Link from 'next/link'
+
 import NewSearchForm from './NewSearchForm'
 
 const SideBarContent = ({
@@ -11,11 +14,20 @@ const SideBarContent = ({
 	userId: string
 }) => {
 	return (
-		<motion.div className='px-8 flex flex-col gap-4 min-w-[15%] text-left'>
+		<motion.div className='px-6 flex flex-col min-w-[15%] text-left'>
 			<NewSearchForm userId={userId} />
 			{searches.length === 0 && <span>No searches...</span>}
 			{searches.length > 0 &&
-				searches.map((search) => <div key={search.id}>{search.title}</div>)}
+				searches.map((search) => (
+					<Link
+						href={`/home/${search.id}`}
+						key={search.id}
+						className='flex gap-2 items-center hover:bg-offbg p-2 rounded-lg'
+					>
+						<BsCardList className='h-5 w-5' />
+						{search.title}
+					</Link>
+				))}
 		</motion.div>
 	)
 }

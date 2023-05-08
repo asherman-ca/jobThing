@@ -7,7 +7,6 @@ import UserButton from './UserButton'
 
 const Nav = async () => {
 	const session = await getServerSession(authOptions)
-	console.log('SESSION', session)
 
 	return (
 		<div className='bg-mainbg flex justify-between items-center p-8'>
