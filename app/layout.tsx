@@ -25,6 +25,7 @@ export default function RootLayout({
 			<body
 				className={`flex-1 flex flex-col ${poppins.className} text-mainfont`}
 			>
+				{/* @ts-ignore */}
 				<Nav />
 				{children}
 			</body>
