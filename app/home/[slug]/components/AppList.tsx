@@ -1,20 +1,16 @@
 'use client'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-
-import React from 'react'
+import { BsCardText } from 'react-icons/bs'
+import AppItem from './AppItem'
 
 const AppList = ({ applications }: { applications: any[] }) => {
+	const [order, setOrder] = useState('desc')
+
 	return (
 		<div className='flex flex-col gap-4'>
 			{applications.map((app) => (
-				<motion.div
-					layout
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					key={app.id}
-				>
-					{app.company}
-				</motion.div>
+				<AppItem app={app} key={app.id} />
 			))}
 		</div>
 	)
