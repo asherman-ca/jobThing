@@ -15,6 +15,7 @@ module.exports = {
 			colors: {
 				mainbg: '#12171A',
 				mainfont: '#FFFFFF',
+				offbg: '#292D33',
 			},
 			keyframes: {
 				wiggle: {

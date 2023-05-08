@@ -12,7 +12,7 @@ const SignInButton = () => {
 			}`}
 			onClick={() => {
 				setEffect(true)
-				signIn()
+				signIn('google')
 			}}
 			onAnimationEnd={() => setEffect(false)}
 		>
