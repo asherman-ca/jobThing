@@ -23,7 +23,7 @@ export default function RootLayout({
 	return (
 		<html lang='en' className='min-h-full flex'>
 			<body
-				className={`flex-1 flex flex-col ${poppins.className} text-mainfont`}
+				className={`flex-1 flex flex-col ${poppins.className} text-mainfont bg-mainbg w-full`}
 			>
 				{/* @ts-ignore */}
 				<Nav />

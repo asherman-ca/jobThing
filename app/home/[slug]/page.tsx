@@ -28,7 +28,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
 			<AppContent
 				applications={applications}
 				session={session}
-				saerchId={searchId}
+				searchId={searchId}
 			/>
 		</div>
 	)

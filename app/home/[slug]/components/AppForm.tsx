@@ -1,5 +1,5 @@
 'use client'
-import { FormEvent, useState, useRef, useTransition } from 'react'
+import { FormEvent, useState, useRef } from 'react'
 import { BsFillSendCheckFill } from 'react-icons/bs'
 import { useRouter } from 'next/navigation'
 import { createApplication } from '../actions'
@@ -18,10 +18,11 @@ const AppForm = ({
 	const router = useRouter()
 	const formRef = useRef<HTMLFormElement>(null)
 	const [loading, setLoading] = useState(false)
-	const [isPending, startTransition] = useTransition()
 
 	const handleSubmit = async (e: FormEvent) => {
 		e.preventDefault()
+		console.log('SEARCHID', searchId)
+		console.log('USERID', userId)
 		const data = new FormData(e.target as HTMLFormElement)
 		if (data.get('company') === '' || data.get('position') === '') return
 		setLoading(true)
