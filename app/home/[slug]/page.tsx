@@ -4,6 +4,7 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 
 import AppForm from './components/AppForm'
 import AppList from './components/AppList'
+import AppContent from './components/AppContent'
 
 const fetchApplications = async (session: any, searchId: string) => {
 	return prisma.application.findMany({
@@ -23,11 +24,12 @@ const page = async ({ params }: { params: { slug: string } }) => {
 	const applications = await fetchApplications(session, searchId)
 
 	return (
-		<div className='flex flex-col gap-4'>
-			{/* @ts-ignore */}
-			<AppForm searchId={searchId} userId={session.user.id} />
-			{applications.length == 0 && <div>Submit an application...</div>}
-			{applications.length > 0 && <AppList applications={applications} />}
+		<div className='flex flex-col gap-4 flex-1 pr-8'>
+			<AppContent
+				applications={applications}
+				session={session}
+				saerchId={searchId}
+			/>
 		</div>
 	)
 }

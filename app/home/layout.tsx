@@ -9,7 +9,7 @@ const layout = async ({ children }: { children: React.ReactNode }) => {
 
 	if (session) {
 		return (
-			<div className='bg-mainbg flex-1 flex'>
+			<div className='bg-mainbg flex-1 w-full flex'>
 				{/* @ts-ignore */}
 				<SideBar session={session} />
 				{children}

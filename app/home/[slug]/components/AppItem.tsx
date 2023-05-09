@@ -1,4 +1,5 @@
 'use client'
+import { Suspense, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import TimeAgo from 'react-timeago'
 import { motion } from 'framer-motion'
@@ -8,12 +9,20 @@ import { IoSkullOutline } from 'react-icons/io5'
 
 const AppItem = ({ app }: any) => {
 	const router = useRouter()
+	const [loading, setLoading] = useState<boolean>(false)
 
 	const handleClick = async () => {
-		const newStatus = app.status === 'rejected' ? 'active' : 'rejected'
-		const update = await updateApplication(newStatus, app.id)
-		router.refresh()
-		router.push(`/home/${app.searchId}`)
+		try {
+			const newStatus = app.status === 'rejected' ? 'active' : 'rejected'
+			setLoading(true)
+			const update = await updateApplication(newStatus, app.id)
+			router.refresh()
+			router.push(`/home/${app.searchId}`)
+		} catch (err) {
+			console.log(err)
+		} finally {
+			setLoading(false)
+		}
 	}
 
 	return (
@@ -26,12 +35,16 @@ const AppItem = ({ app }: any) => {
 		>
 			{app.status === 'rejected' ? (
 				<IoSkullOutline
-					className='h-5 w-5 cursor-pointer'
+					className={`h-5 w-5 cursor-pointer hover:text-green-500 ${
+						loading && 'animate-spin text-green-500'
+					}`}
 					onClick={handleClick}
 				/>
 			) : (
 				<BsCardText
-					className='h-5 w-5 cursor-pointer hover:fill-red-500'
+					className={`h-5 w-5 cursor-pointer hover:fill-red-500 ${
+						loading && 'animate-spin fill-red-500'
+					}}`}
 					onClick={handleClick}
 				/>
 			)}
