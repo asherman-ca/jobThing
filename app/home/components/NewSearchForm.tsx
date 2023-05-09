@@ -30,7 +30,7 @@ const NewSearchForm = ({ userId }: { userId: string }) => {
 		<form
 			onSubmit={handleSubmit}
 			ref={formRef}
-			className='px-2 flex items-center gap-2'
+			className='px-2 flex items-center gap-2 mb-4'
 		>
 			<button type='submit' disabled={loading}>
 				<BsFillCheckSquareFill
