@@ -16,7 +16,7 @@ const SideBarContent = ({
 	return (
 		<motion.div className='px-6 flex flex-col text-left'>
 			<NewSearchForm userId={userId} />
-			{searches.length === 0 && <span>No searches...</span>}
+			{searches.length === 0 && <span className='p-2'>No searches...</span>}
 			{searches.length > 0 &&
 				searches.map((search) => (
 					<Link
