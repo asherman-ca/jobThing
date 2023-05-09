@@ -2,8 +2,15 @@
 import { useState } from 'react'
 import AppForm from './AppForm'
 import AppList from './AppList'
+import { SessionType, AppType } from '@/app/util/types'
 
-const AppContent = ({ searchId, applications, session }: any) => {
+type PropType = {
+	searchId: string
+	applications: AppType[]
+	session: SessionType
+}
+
+const AppContent = ({ searchId, applications, session }: PropType) => {
 	const [filter, setFilter] = useState<string>('active')
 
 	return (

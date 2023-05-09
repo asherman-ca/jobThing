@@ -1,14 +1,11 @@
-'use client'
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { BsCardText } from 'react-icons/bs'
 import AppItem from './AppItem'
+import { AppType } from '@/app/util/types'
 
 const AppList = ({
 	applications,
 	filter,
 }: {
-	applications: any[]
+	applications: AppType[]
 	filter: string
 }) => {
 	const displayItems = applications.filter((app) => app.status === filter)
@@ -16,7 +13,7 @@ const AppList = ({
 	return (
 		<div className='flex flex-col gap-4'>
 			{displayItems.map((app) => (
-				<AppItem app={app} key={app.id} />
+				<AppItem application={app} key={app.id} />
 			))}
 		</div>
 	)

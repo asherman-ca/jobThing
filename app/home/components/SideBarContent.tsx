@@ -3,14 +3,14 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { BsCardList } from 'react-icons/bs'
 import Link from 'next/link'
-
 import NewSearchForm from './NewSearchForm'
+import { SearchType } from '@/app/util/types'
 
 const SideBarContent = ({
 	searches,
 	userId,
 }: {
-	searches: any[]
+	searches: SearchType[]
 	userId: string
 }) => {
 	return (

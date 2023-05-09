@@ -6,18 +6,20 @@ import { motion } from 'framer-motion'
 import { BsCardText } from 'react-icons/bs'
 import { updateApplication } from '../actions'
 import { IoSkullOutline } from 'react-icons/io5'
+import { AppType } from '@/app/util/types'
 
-const AppItem = ({ app }: any) => {
+const AppItem = ({ application }: { application: AppType }) => {
 	const router = useRouter()
 	const [loading, setLoading] = useState<boolean>(false)
 
 	const handleClick = async () => {
 		try {
-			const newStatus = app.status === 'rejected' ? 'active' : 'rejected'
+			const newStatus =
+				application.status === 'rejected' ? 'active' : 'rejected'
 			setLoading(true)
-			const update = await updateApplication(newStatus, app.id)
+			const update = await updateApplication(newStatus, application.id)
 			router.refresh()
-			router.push(`/home/${app.searchId}`)
+			router.push(`/home/${application.searchId}`)
 		} catch (err) {
 			console.log(err)
 		} finally {
@@ -30,10 +32,10 @@ const AppItem = ({ app }: any) => {
 			layout
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
-			key={app.id}
+			key={application.id}
 			className='w-full flex gap-4'
 		>
-			{app.status === 'rejected' ? (
+			{application.status === 'rejected' ? (
 				<IoSkullOutline
 					className={`h-5 w-5 cursor-pointer hover:text-green-500 ${
 						loading && 'animate-spin text-green-500'
@@ -48,9 +50,9 @@ const AppItem = ({ app }: any) => {
 					onClick={handleClick}
 				/>
 			)}
-			<div className='w-36'>{app.company}</div>
-			<div className='w-36'>{app.position}</div>
-			<TimeAgo date={app.createdAt} className='w-36' />
+			<div className='w-36'>{application.company}</div>
+			<div className='w-36'>{application.position}</div>
+			<TimeAgo date={application.createdAt} className='w-36' />
 		</motion.div>
 	)
 }
