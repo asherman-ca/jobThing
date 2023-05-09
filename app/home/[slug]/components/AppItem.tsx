@@ -30,6 +30,8 @@ const AppItem = ({ application }: { application: AppType }) => {
 	}
 
 	const handleDelete = async () => {
+		let confirmed = confirm('Are you sure you want to delete this application?')
+		if (!confirmed) return
 		try {
 			setDeleteLoading(true)
 			const deleted = await deleteApplication(application.id)
