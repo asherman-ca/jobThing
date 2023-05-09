@@ -25,8 +25,6 @@ const AppForm = ({
 
 	const handleSubmit = async (e: FormEvent) => {
 		e.preventDefault()
-		console.log('SEARCHID', searchId)
-		console.log('USERID', userId)
 		const data = new FormData(e.target as HTMLFormElement)
 		if (data.get('company') === '' || data.get('position') === '') return
 		setLoading(true)
