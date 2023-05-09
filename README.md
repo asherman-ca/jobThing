@@ -1,3 +1,5 @@
+![Alt text](https://github.com/asherman-ca/jobThing/blob/main/public/preview.jpg)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
