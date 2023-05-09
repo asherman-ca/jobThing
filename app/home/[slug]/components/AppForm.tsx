@@ -2,6 +2,10 @@
 import { FormEvent, useState, useRef } from 'react'
 import { BsFillSendCheckFill } from 'react-icons/bs'
 import { useRouter } from 'next/navigation'
+import { BsCardText } from 'react-icons/bs'
+import { IoSkullOutline } from 'react-icons/io5'
+import { motion } from 'framer-motion'
+
 import { createApplication } from '../actions'
 
 const AppForm = ({
@@ -63,7 +67,21 @@ const AppForm = ({
 					placeholder='Position'
 				/>
 			</form>
-			<button onClick={handleFilter}>Status</button>
+			<div className='flex items-center gap-1'>
+				<BsCardText />
+				<button
+					onClick={handleFilter}
+					className={`flex h-6 w-12 bg-offbg items-center rounded-full px-1 ${
+						filter === 'rejected' ? 'justify-end' : 'justify-start'
+					}`}
+				>
+					<motion.div
+						layout
+						className='h-4 w-4 bg-white rounded-full'
+					></motion.div>
+				</button>
+				<IoSkullOutline />
+			</div>
 		</div>
 	)
 }
