@@ -14,7 +14,7 @@ const AppContent = ({ searchId, applications, session }: PropType) => {
 	const [filter, setFilter] = useState<string>('active')
 
 	return (
-		<>
+		<div className='flex flex-col gap-8'>
 			{/* @ts-ignore */}
 			<AppForm
 				searchId={searchId}
@@ -26,7 +26,7 @@ const AppContent = ({ searchId, applications, session }: PropType) => {
 			{applications.length > 0 && (
 				<AppList applications={applications} filter={filter} />
 			)}
-		</>
+		</div>
 	)
 }
 

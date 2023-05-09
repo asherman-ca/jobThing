@@ -25,7 +25,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
 	const applications: AppType[] = await fetchApplications(session!, searchId)
 
 	return (
-		<div className='flex flex-col gap-4 flex-1 max-w-[75%]'>
+		<div className=''>
 			<AppContent
 				applications={applications}
 				session={session!}

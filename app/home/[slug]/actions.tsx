@@ -10,6 +10,7 @@ export async function createApplication(
 		data: {
 			company: formData.get('company') as string,
 			position: formData.get('position') as string,
+			location: (formData.get('location') as string) || 'US',
 			searchId,
 			userId,
 		},

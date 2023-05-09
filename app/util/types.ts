@@ -5,6 +5,7 @@ export type AppType = {
 	status: string
 	searchId: string
 	id: string
+	location: string
 }
 
 export type SearchType = {

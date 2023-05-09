@@ -14,6 +14,8 @@ const AppItem = ({ application }: { application: AppType }) => {
 	const [loading, setLoading] = useState<boolean>(false)
 	const [deleteLoading, setDeleteLoading] = useState<boolean>(false)
 
+	console.log('app', application)
+
 	const handleClick = async () => {
 		try {
 			const newStatus =
@@ -70,6 +72,7 @@ const AppItem = ({ application }: { application: AppType }) => {
 			)}
 			<div className='w-48 truncate'>{application.company}</div>
 			<div className='w-48 truncate'>{application.position}</div>
+			<div className='w-48 truncate'>{application.location}</div>
 			<TimeAgo className='w-48' date={application.createdAt} />
 			<BsTrash
 				className={`h-5 w-5 hover:fill-red-500 cursor-pointer ${

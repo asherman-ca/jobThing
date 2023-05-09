@@ -68,6 +68,13 @@ const AppForm = ({
 					className='bg-mainbg text-mainfont outline-none w-48'
 					placeholder='Position'
 				/>
+				<input
+					type='text'
+					name='location'
+					id='location'
+					className='bg-mainbg text-mainfont outline-none w-48'
+					placeholder='Location'
+				/>
 			</form>
 			<div className='flex items-center gap-1'>
 				<BsCardText />
