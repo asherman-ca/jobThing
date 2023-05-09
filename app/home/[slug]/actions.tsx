@@ -28,3 +28,12 @@ export async function updateApplication(status: string, appId: string) {
 	})
 	return application
 }
+
+export async function deleteApplication(appId: string) {
+	const application = await prisma.application.delete({
+		where: {
+			id: appId,
+		},
+	})
+	return application
+}

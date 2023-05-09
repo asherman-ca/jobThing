@@ -1,16 +1,18 @@
 'use client'
-import { Suspense, useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import TimeAgo from 'react-timeago'
 import { motion } from 'framer-motion'
 import { BsCardText } from 'react-icons/bs'
-import { updateApplication } from '../actions'
+import { updateApplication, deleteApplication } from '../actions'
 import { IoSkullOutline } from 'react-icons/io5'
+import { BsTrash } from 'react-icons/bs'
 import { AppType } from '@/app/util/types'
 
 const AppItem = ({ application }: { application: AppType }) => {
 	const router = useRouter()
 	const [loading, setLoading] = useState<boolean>(false)
+	const [deleteLoading, setDeleteLoading] = useState<boolean>(false)
 
 	const handleClick = async () => {
 		try {
@@ -27,13 +29,27 @@ const AppItem = ({ application }: { application: AppType }) => {
 		}
 	}
 
+	const handleDelete = async () => {
+		try {
+			setDeleteLoading(true)
+			const deleted = await deleteApplication(application.id)
+			router.refresh()
+			router.push(`/home/${application.searchId}`)
+		} catch (err) {
+			console.log(err)
+			alert(err)
+		} finally {
+			setDeleteLoading(false)
+		}
+	}
+
 	return (
 		<motion.div
 			layout
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			key={application.id}
-			className='w-full flex gap-4'
+			className='w-full flex items-center gap-8'
 		>
 			{application.status === 'rejected' ? (
 				<IoSkullOutline
@@ -50,9 +66,17 @@ const AppItem = ({ application }: { application: AppType }) => {
 					onClick={handleClick}
 				/>
 			)}
-			<div className='w-36'>{application.company}</div>
-			<div className='w-36'>{application.position}</div>
-			<TimeAgo date={application.createdAt} className='w-36' />
+			<div className='w-48 truncate'>{application.company}</div>
+			<div className='w-48 truncate'>{application.position}</div>
+			<TimeAgo className='w-48' date={application.createdAt} />
+			<BsTrash
+				className={`h-5 w-5 hover:fill-red-500 cursor-pointer ${
+					deleteLoading && 'animate-spin fill-red-500'
+				}`}
+				onClick={handleDelete}
+			>
+				x
+			</BsTrash>
 		</motion.div>
 	)
 }

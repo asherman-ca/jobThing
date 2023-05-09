@@ -46,7 +46,7 @@ const AppForm = ({
 
 	return (
 		<div className='flex justify-between'>
-			<form onSubmit={handleSubmit} className='flex gap-4' ref={formRef}>
+			<form onSubmit={handleSubmit} className='flex gap-8' ref={formRef}>
 				<button type='submit'>
 					<BsFillSendCheckFill
 						className={`hover:fill-green-500 cursor-pointer h-5 w-5 rounded-md ${
@@ -58,14 +58,14 @@ const AppForm = ({
 					type='text'
 					name='company'
 					id='company'
-					className='bg-mainbg text-mainfont outline-none w-36'
+					className='bg-mainbg text-mainfont outline-none w-48'
 					placeholder='Company'
 				/>
 				<input
 					type='text'
 					name='position'
 					id='position'
-					className='bg-mainbg text-mainfont outline-none w-36'
+					className='bg-mainbg text-mainfont outline-none w-48'
 					placeholder='Position'
 				/>
 			</form>
