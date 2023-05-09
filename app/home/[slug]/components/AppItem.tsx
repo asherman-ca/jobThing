@@ -14,8 +14,6 @@ const AppItem = ({ application }: { application: AppType }) => {
 	const [loading, setLoading] = useState<boolean>(false)
 	const [deleteLoading, setDeleteLoading] = useState<boolean>(false)
 
-	console.log('app', application)
-
 	const handleClick = async () => {
 		try {
 			const newStatus =
@@ -53,35 +51,41 @@ const AppItem = ({ application }: { application: AppType }) => {
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			key={application.id}
-			className='w-full flex items-center gap-8'
+			className='flex items-center gap-8 w-full justify-between'
 		>
-			{application.status === 'rejected' ? (
-				<IoSkullOutline
-					className={`h-5 w-5 cursor-pointer hover:text-green-500 ${
-						loading && 'animate-spin text-green-500'
+			<div className='flex gap-8'>
+				{application.status === 'rejected' ? (
+					<IoSkullOutline
+						className={`h-5 w-5 cursor-pointer hover:text-green-500 ${
+							loading && 'animate-spin text-green-500'
+						}`}
+						onClick={handleClick}
+					/>
+				) : (
+					<BsCardText
+						className={`h-5 w-5 cursor-pointer hover:fill-red-500 ${
+							loading && 'animate-spin fill-red-500'
+						}}`}
+						onClick={handleClick}
+					/>
+				)}
+				<div className='w-36 truncate'>{application.company}</div>
+				<div className='w-36 truncate'>{application.position}</div>
+				<div className='w-36 truncate'>{application.location}</div>
+
+				<div className='w-36 truncate'>{application.status}</div>
+				<TimeAgo date={application.createdAt} />
+			</div>
+			<div>
+				<BsTrash
+					className={`h-5 w-5 hover:fill-red-500 cursor-pointer ${
+						deleteLoading && 'animate-spin fill-red-500'
 					}`}
-					onClick={handleClick}
-				/>
-			) : (
-				<BsCardText
-					className={`h-5 w-5 cursor-pointer hover:fill-red-500 ${
-						loading && 'animate-spin fill-red-500'
-					}}`}
-					onClick={handleClick}
-				/>
-			)}
-			<div className='w-48 truncate'>{application.company}</div>
-			<div className='w-48 truncate'>{application.position}</div>
-			<div className='w-48 truncate'>{application.location}</div>
-			<TimeAgo className='w-48' date={application.createdAt} />
-			<BsTrash
-				className={`h-5 w-5 hover:fill-red-500 cursor-pointer ${
-					deleteLoading && 'animate-spin fill-red-500'
-				}`}
-				onClick={handleDelete}
-			>
-				x
-			</BsTrash>
+					onClick={handleDelete}
+				>
+					x
+				</BsTrash>
+			</div>
 		</motion.div>
 	)
 }

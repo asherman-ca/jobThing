@@ -58,21 +58,21 @@ const AppForm = ({
 					type='text'
 					name='company'
 					id='company'
-					className='bg-mainbg text-mainfont outline-none w-48'
+					className='bg-mainbg text-mainfont outline-none w-36'
 					placeholder='Company'
 				/>
 				<input
 					type='text'
 					name='position'
 					id='position'
-					className='bg-mainbg text-mainfont outline-none w-48'
+					className='bg-mainbg text-mainfont outline-none w-36'
 					placeholder='Position'
 				/>
 				<input
 					type='text'
 					name='location'
 					id='location'
-					className='bg-mainbg text-mainfont outline-none w-48'
+					className='bg-mainbg text-mainfont outline-none w-36'
 					placeholder='Location'
 				/>
 			</form>
