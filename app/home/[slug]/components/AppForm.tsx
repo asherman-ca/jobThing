@@ -30,10 +30,14 @@ const AppForm = ({
 		const data = new FormData(e.target as HTMLFormElement)
 		if (data.get('company') === '' || data.get('position') === '') return
 		setLoading(true)
-		const app = await createApplication(data, userId, searchId)
-		router.refresh()
-		router.push(`/home/${searchId}`)
-		formRef.current?.reset()
+		try {
+			const app = await createApplication(data, userId, searchId)
+			router.refresh()
+			router.push(`/home/${searchId}`)
+			formRef.current?.reset()
+		} catch (error) {
+			alert(error)
+		}
 		setLoading(false)
 	}
 

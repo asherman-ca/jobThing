@@ -15,10 +15,14 @@ const NewSearchForm = ({ userId }: { userId: string }) => {
 		const data = new FormData(e.target as HTMLFormElement)
 		if (data.get('name') === '') return
 		setLoading(true)
-		const search = await createSearch(data, userId)
-		router.refresh()
-		router.push(`/home/${search.id}`)
-		formRef.current?.reset()
+		try {
+			const search = await createSearch(data, userId)
+			router.refresh()
+			router.push(`/home/${search.id}`)
+			formRef.current?.reset()
+		} catch (error) {
+			alert(error)
+		}
 		setLoading(false)
 	}
 
