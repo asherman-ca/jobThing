@@ -25,7 +25,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
 	const applications: AppType[] = await fetchApplications(session!, searchId)
 
 	return (
-		<div className='w-full pr-8'>
+		<div className='w-full pr-8 pb-8'>
 			<AppContent
 				applications={applications}
 				session={session!}
