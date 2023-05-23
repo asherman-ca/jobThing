@@ -21,9 +21,9 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang='en' className='min-h-full flex'>
+		<html lang='en' className='h-screen flex'>
 			<body
-				className={`flex-1 flex flex-col ${poppins.className} text-mainfont bg-mainbg w-full`}
+				className={`flex-1 flex flex-col ${poppins.className} text-mainfont bg-mainbg w-full overflow-auto scrollbar-hide`}
 			>
 				{/* @ts-ignore */}
 				<Nav />
