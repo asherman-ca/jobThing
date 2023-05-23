@@ -7,6 +7,9 @@ const fetchSearches = async (session: SessionType): Promise<SearchType[]> => {
 		where: {
 			userId: session.user.id,
 		},
+		include: {
+			applications: true,
+		},
 	})
 }
 

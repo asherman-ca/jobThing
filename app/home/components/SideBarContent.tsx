@@ -10,7 +10,7 @@ const SideBarContent = ({
 	searches,
 	userId,
 }: {
-	searches: SearchType[]
+	searches: any[]
 	userId: string
 }) => {
 	return (
@@ -25,7 +25,12 @@ const SideBarContent = ({
 						className='flex gap-2 items-center hover:bg-offbg p-2 rounded-lg'
 					>
 						<BsCardList className='h-5 w-5' />
-						{search.title}
+						<div className='relative'>
+							<div className='absolute -top-3 -right-7 text-xs bg-gray-200/75 text-black rounded-full p-1 min-w-[25px] min-h-[25px] text-center'>
+								{search.applications.length}
+							</div>
+							{search.title}
+						</div>
 					</Link>
 				))}
 		</motion.div>
